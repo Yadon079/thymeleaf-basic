@@ -12,7 +12,6 @@ public class BasicController {
   @GetMapping("/text-basic")
   public String textBasic(Model model) {
     model.addAttribute("data", "Hello Spring!");
-
     return "basic/text-basic";
   }
 
@@ -21,6 +20,41 @@ public class BasicController {
     model.addAttribute("data", "Hello <b>Spring!</b>");
 
     return "basic/text-unescaped";
+  }
+
+  @GetMapping("/variable")
+  public String variable(Model model) {
+
+    User userA = new User("UserA", 10);
+    User userB = new User("UserB", 10);
+
+    List<User> list = new ArrayList<>();
+    list.add(userA);
+    list.add(userB);
+
+    Map<String, User> map = new HashMap<>();
+    map.put("userA", userA);
+    map.put("userB", userB);
+
+    model.addAttribute("user", userA);
+    model.addAttribute("users", list);
+    model.addAttribute("userMap", map);
+
+    return "basic/variable";
+  }
+
+  @Data
+  static class User {
+
+    private String username;
+
+    private int age;
+
+    public User(String username, int age) {
+      this.username = username;
+      this.age = age;
+    }
+
   }
 
 }
