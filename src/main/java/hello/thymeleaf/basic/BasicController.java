@@ -152,7 +152,7 @@ public class BasicController {
   public String block(Model model) {
     addUsers(model);
 
-    return "basic/clock";
+    return "basic/block";
   }
 
   @GetMapping("/javascript")
@@ -162,4 +162,5 @@ public class BasicController {
 
     return "basic/javascript";
   }
+
 }
